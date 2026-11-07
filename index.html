@@ -1,0 +1,2124 @@
+<!doctype html>
+<html lang="ko" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>대덕 딥테크 AI 밸류체인 창직 혁신 플랫폼</title>
+    <meta name="description" content="대덕연구개발특구의 초격차 공공기술과 산업 밸류체인을 AI로 연결하는 차세대 딥테크 창직(Job Creation) 및 기술사업화 혁신 플랫폼입니다." />
+    <meta property="og:title" content="대덕 딥테크 AI 밸류체인 창직 혁신 플랫폼" />
+    <meta property="og:description" content="대덕연구개발특구의 초격차 공공기술과 산업 밸류체인을 AI로 연결하는 차세대 딥테크 창직(Job Creation) 및 기술사업화 혁신 플랫폼입니다." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts: Pretendard & Plus Jakarta Sans -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              techBlue: {
+                DEFAULT: '#2563EB',
+                hover: '#1D4ED8',
+                light: '#3B82F6',
+              },
+              techCyan: {
+                DEFAULT: '#06B6D4',
+                light: '#22D3EE',
+              }
+            },
+            fontFamily: {
+              sans: ['Pretendard', 'Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      body {
+        background-color: #ffffff;
+        color: #1e293b;
+        font-family: 'Pretendard', 'Plus Jakarta Sans', sans-serif;
+      }
+      .light-glow-blue {
+        box-shadow: 0 10px 40px -10px rgba(37, 99, 235, 0.12);
+      }
+      .light-glow-cyan {
+        box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.15);
+      }
+      ::selection {
+        background-color: #2563eb;
+        color: #ffffff;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-slate-800 min-h-screen overflow-x-hidden antialiased selection:bg-blue-600 selection:text-white">
+
+    <!-- Toast Notification Container -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none p-4 rounded-xl bg-slate-900 border border-slate-700 shadow-2xl text-white text-xs sm:text-sm flex items-center gap-3 max-w-md">
+      <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0"></i>
+      <span id="toast-message">안내 메시지입니다.</span>
+    </div>
+
+    <!-- 1. Header (Sticky Top Bar - Clean Bright White) -->
+    <header class="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/95 backdrop-blur-md shadow-xs">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-8">
+        <!-- Zone 1: Single Brand Wordmark -->
+        <a href="#" class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 whitespace-nowrap shrink-0 flex items-center gap-2 group">
+          <span class="w-2.5 h-2.5 rounded-sm bg-blue-600 group-hover:bg-cyan-500 transition-colors"></span>
+          <span>대덕 딥테크 밸류체인 혁신본부</span>
+        </a>
+
+        <!-- Zone 2: 5 Concise Nav Links -->
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-600">
+          <a href="#about" class="hover:text-blue-600 transition-colors whitespace-nowrap shrink-0">플랫폼 소개</a>
+          <a href="#job-models" class="hover:text-blue-600 transition-colors whitespace-nowrap shrink-0">4대 창직 모델</a>
+          <a href="#diagnosis-tool" class="hover:text-blue-600 transition-colors whitespace-nowrap shrink-0">AI 밸류체인 진단기</a>
+          <a href="#announcements" class="hover:text-blue-600 transition-colors whitespace-nowrap shrink-0">지원사업 공고</a>
+          <a href="#cases" class="hover:text-blue-600 transition-colors whitespace-nowrap shrink-0">성공 사례</a>
+        </nav>
+
+        <!-- Zone 3: 1 Primary Action -->
+        <div class="hidden sm:flex items-center gap-4 shrink-0">
+          <button onclick="scrollToConsultation()" class="px-5 py-2.5 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm hover:shadow-blue-600/25 transition-all whitespace-nowrap shrink-0 cursor-pointer">
+            원클릭 매칭 상담
+          </button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="flex lg:hidden items-center gap-2">
+          <button onclick="scrollToConsultation()" class="px-3 py-1.5 text-xs font-semibold text-white bg-blue-600 rounded-md sm:hidden whitespace-nowrap">
+            상담 신청
+          </button>
+          <button onclick="toggleMobileMenu()" class="p-2 text-slate-600 hover:text-slate-900 rounded-lg focus:outline-none" aria-label="Toggle menu">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown -->
+      <div id="mobile-menu" class="hidden lg:hidden border-b border-slate-200 bg-white px-4 pt-3 pb-5 space-y-3 shadow-md">
+        <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-sm font-medium text-slate-700 hover:text-blue-600">플랫폼 소개</a>
+        <a href="#job-models" onclick="toggleMobileMenu()" class="block py-2 text-sm font-medium text-slate-700 hover:text-blue-600">4대 창직 모델</a>
+        <a href="#diagnosis-tool" onclick="toggleMobileMenu()" class="block py-2 text-sm font-medium text-slate-700 hover:text-blue-600">AI 밸류체인 진단기</a>
+        <a href="#announcements" onclick="toggleMobileMenu()" class="block py-2 text-sm font-medium text-slate-700 hover:text-blue-600">지원사업 공고</a>
+        <a href="#cases" onclick="toggleMobileMenu()" class="block py-2 text-sm font-medium text-slate-700 hover:text-blue-600">성공 사례</a>
+        <div class="pt-2">
+          <button onclick="toggleMobileMenu(); scrollToConsultation();" class="w-full py-2.5 text-center text-sm font-semibold text-white bg-blue-600 rounded-lg shadow">
+            원클릭 매칭 상담 신청
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- 2. Hero Section (Clean Bright Sky & White Tone) -->
+      <section class="relative pt-12 pb-20 overflow-hidden border-b border-slate-200 bg-gradient-to-b from-blue-50/50 via-slate-50/30 to-white">
+        <!-- Soft subtle background glows -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-blue-100/60 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-[400px] h-[250px] bg-cyan-100/50 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Left Column: Proposition and Integrated Search -->
+            <div class="lg:col-span-7 space-y-6">
+              <!-- Editorial Kicker -->
+              <div class="flex items-center gap-2 text-xs font-semibold tracking-wide text-blue-600">
+                <span>대덕연구개발특구 창직 혁신 프로젝트</span>
+                <span aria-hidden="true" class="text-slate-300">·</span>
+                <span class="text-slate-500 font-medium">과학기술정보통신부 & KIAT 연계</span>
+              </div>
+
+              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight lg:leading-[1.18]">
+                대덕 딥테크 원천기술과 <br class="hidden sm:inline" />
+                산업 밸류체인을 잇는 <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600">
+                  차세대 창직(Job Creation) 혁신
+                </span>
+              </h1>
+
+              <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl">
+                26개 정부출연연구기관의 초격차 연구성과(Lab)를 AI 밸류체인 분석으로 시장(Market)과 연결하고,
+                청년 석·박사 및 기술 전문가를 위한 새로운 고부가가치 직업군을 발굴·육성합니다.
+              </p>
+
+              <!-- Integrated Search Bar (KIAT Benchmarking in Crisp White) -->
+              <div class="pt-2">
+                <form id="hero-search-form" onsubmit="handleHeroSearch(event)" class="relative max-w-xl">
+                  <div class="flex items-center bg-white border border-slate-300 rounded-xl p-1.5 focus-within:border-blue-600 focus-within:ring-3 focus-within:ring-blue-100 transition-all shadow-md">
+                    <i data-lucide="search" class="w-5 h-5 text-slate-400 ml-3 shrink-0"></i>
+                    <input
+                      type="text"
+                      id="hero-search-input"
+                      placeholder="관심 딥테크 분야 또는 특허 키워드 검색"
+                      class="w-full bg-transparent px-3 py-2 text-sm text-slate-900 placeholder-slate-400 focus:outline-none"
+                    />
+                    <button
+                      type="submit"
+                      class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors whitespace-nowrap cursor-pointer shadow-xs"
+                    >
+                      기술 검색
+                    </button>
+                  </div>
+                </form>
+
+                <!-- Recommendation Keywords -->
+                <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5 mt-3 text-xs text-slate-500">
+                  <span class="text-slate-400 font-medium">추천 검색어:</span>
+                  <button onclick="searchKeyword('GaN 전력반도체')" class="hover:text-blue-600 transition-colors text-slate-700 underline underline-offset-2 decoration-slate-300 hover:decoration-blue-600">GaN 전력반도체</button>
+                  <span class="text-slate-300">·</span>
+                  <button onclick="searchKeyword('양자컴퓨팅')" class="hover:text-blue-600 transition-colors text-slate-700 underline underline-offset-2 decoration-slate-300 hover:decoration-blue-600">양자컴퓨팅</button>
+                  <span class="text-slate-300">·</span>
+                  <button onclick="searchKeyword('면역세포치료제')" class="hover:text-blue-600 transition-colors text-slate-700 underline underline-offset-2 decoration-slate-300 hover:decoration-blue-600">면역세포치료제</button>
+                  <span class="text-slate-300">·</span>
+                  <button onclick="searchKeyword('UAM 복합재')" class="hover:text-blue-600 transition-colors text-slate-700 underline underline-offset-2 decoration-slate-300 hover:decoration-blue-600">UAM 복합재</button>
+                  <span class="text-slate-300">·</span>
+                  <button onclick="searchKeyword('휴머노이드 액추에이터')" class="hover:text-blue-600 transition-colors text-slate-700 underline underline-offset-2 decoration-slate-300 hover:decoration-blue-600">휴머노이드 액추에이터</button>
+                </div>
+              </div>
+
+              <!-- CTA Actions -->
+              <div class="flex flex-wrap items-center gap-4 pt-2">
+                <a
+                  href="#diagnosis-tool"
+                  class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-all shadow-md hover:shadow-blue-600/25 flex items-center gap-2 group cursor-pointer"
+                >
+                  <span>AI 밸류체인 무료 정밀진단</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <button
+                  onclick="scrollToConsultation()"
+                  class="px-6 py-3 bg-white hover:bg-slate-50 text-slate-700 font-medium rounded-xl border border-slate-300 hover:border-slate-400 transition-all shadow-xs cursor-pointer"
+                >
+                  창직 코디네이터 상담 예약
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Column: Visual Asset Card -->
+            <div class="lg:col-span-5 relative">
+              <div class="relative rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-white">
+                <img
+                  src="/assets/images/daedeok_deeptech_hero_1794012876662.jpg"
+                  alt="대덕연구개발특구 첨단 연구단지 전경"
+                  class="w-full h-80 lg:h-[420px] object-cover"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+
+                <!-- Highlight Caption Anchor -->
+                <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-md">
+                  <div class="flex items-center justify-between text-xs text-slate-500 mb-1">
+                    <span class="font-bold text-blue-600">대덕연구개발특구 이노폴리스</span>
+                    <span>대한민국 딥테크 혁신 심장부</span>
+                  </div>
+                  <p class="text-xs text-slate-800 font-medium leading-snug">
+                    KAIST, ETRI, 화학연 등 26개 국가 출연연이 집적된 국내 최대 원천기술 R&D 허브
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4-Column KPI Metric Strip in Bright White -->
+          <div class="mt-16 pt-8 border-t border-slate-200 grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            <div class="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+              <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-mono">26개</div>
+              <div class="text-xs text-slate-500 mt-1 font-medium">대덕특구 정부출연연구원 협약</div>
+            </div>
+            <div class="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+              <div class="text-2xl sm:text-3xl font-extrabold text-cyan-600 font-mono">1,420+건</div>
+              <div class="text-xs text-slate-500 mt-1 font-medium">AI 밸류체인 분석 특허·기술 DB</div>
+            </div>
+            <div class="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+              <div class="text-2xl sm:text-3xl font-extrabold text-blue-600 font-mono">380+명</div>
+              <div class="text-xs text-slate-500 mt-1 font-medium">육성 딥테크 창직 전문인력 풀</div>
+            </div>
+            <div class="p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+              <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-mono">91.4%</div>
+              <div class="text-xs text-slate-500 mt-1 font-medium">출연연-기업 밸류체인 연계 성공률</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Quick Service Hub (Bright White Cards Benchmarking Ansan & KIAT) -->
+      <section id="services" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+              <div class="text-xs font-bold text-blue-600 tracking-wider mb-2">QUICK SERVICE HUB</div>
+              <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+                자주 찾는 대덕 딥테크 핵심 서비스
+              </h2>
+            </div>
+            <p class="text-sm text-slate-600 mt-2 md:mt-0 max-w-md">
+              수요기술 조사부터 AI 밸류체인 진단, 창직 코디네이터 전담 매칭까지 원스톱으로 지원합니다.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Item 1 -->
+            <div onclick="openServiceModal('딥테크 기술수요조사', '기업에 필요한 공백기술을 등록하시면 출연연 원천기술을 역매칭해 드립니다.')" class="group relative p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl shadow-xs cursor-pointer flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors">
+                    <i data-lucide="search" class="w-6 h-6 text-blue-600 group-hover:text-white transition-colors"></i>
+                  </div>
+                  <span class="text-xs text-slate-500 font-medium">수요 매칭</span>
+                </div>
+                <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2">딥테크 기술수요조사</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">기업에 필요한 공백기술을 등록하시면 출연연 원천기술을 역매칭해 드립니다.</p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-blue-600 group-hover:text-blue-700 transition-colors">
+                <span>수요 등록</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div onclick="location.href='#diagnosis-tool'" class="group relative p-6 rounded-2xl bg-white border border-slate-200 hover:border-cyan-500 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl shadow-xs cursor-pointer flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <div class="w-12 h-12 rounded-xl bg-cyan-50 border border-cyan-100 flex items-center justify-center group-hover:bg-cyan-600 transition-colors">
+                    <i data-lucide="network" class="w-6 h-6 text-cyan-600 group-hover:text-white transition-colors"></i>
+                  </div>
+                  <span class="text-xs text-cyan-700 font-medium bg-cyan-50 px-2 py-0.5 rounded">실시간 진단</span>
+                </div>
+                <h3 class="text-base font-bold text-slate-900 group-hover:text-cyan-600 transition-colors mb-2">AI 밸류체인 정밀진단</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">우리 기업 기술 수준과 전후방 서플라이체인 병목 구간을 AI로 분석합니다.</p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-cyan-600 group-hover:text-cyan-700 transition-colors">
+                <span>진단 시작</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div onclick="scrollToConsultation('AI 딥테크 밸류체인 코디네이터')" class="group relative p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl shadow-xs cursor-pointer flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors">
+                    <i data-lucide="user-check" class="w-6 h-6 text-blue-600 group-hover:text-white transition-colors"></i>
+                  </div>
+                  <span class="text-xs text-slate-500 font-medium">전문가 연계</span>
+                </div>
+                <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2">창직 코디네이터 매칭</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">4대 창직 직무 전문가를 1:1 전담 배정받아 기술사업화를 가속합니다.</p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-blue-600 group-hover:text-blue-700 transition-colors">
+                <span>전문가 찾기</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div onclick="openServiceModal('출연연 연구소기업 설립', '출연연 지분 출자 요건 검토부터 특구재단 등록 인가까지 전과정을 원스톱 지원합니다.')" class="group relative p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl shadow-xs cursor-pointer flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors">
+                    <i data-lucide="building-2" class="w-6 h-6 text-blue-600 group-hover:text-white transition-colors"></i>
+                  </div>
+                  <span class="text-xs text-slate-500 font-medium">스핀오프</span>
+                </div>
+                <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2">연구소기업 설립 자문</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">출연연 지분 출자 요건 검토부터 특구재단 등록 인가까지 전과정 지원.</p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-blue-600 group-hover:text-blue-700 transition-colors">
+                <span>신청 가이드</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div onclick="location.href='#announcements'" class="group relative p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl shadow-xs cursor-pointer flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors">
+                    <i data-lucide="file-text" class="w-6 h-6 text-blue-600 group-hover:text-white transition-colors"></i>
+                  </div>
+                  <span class="text-xs text-slate-500 font-medium">통합 공고</span>
+                </div>
+                <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2">정부 R&D / KIAT 공고</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">산업기술진흥원 및 과기부 딥테크 지원사업 최신 공고를 통합 조회합니다.</p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-blue-600 group-hover:text-blue-700 transition-colors">
+                <span>공고 확인</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div onclick="openServiceModal('TIPS & 투자유치 IR', '대덕특구 전용 펀드 및 민간 VC 투자심사역과의 매칭 데모데이를 통해 후속 자금을 조달합니다.')" class="group relative p-6 rounded-2xl bg-white border border-slate-200 hover:border-cyan-500 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl shadow-xs cursor-pointer flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <div class="w-12 h-12 rounded-xl bg-cyan-50 border border-cyan-100 flex items-center justify-center group-hover:bg-cyan-600 transition-colors">
+                    <i data-lucide="trending-up" class="w-6 h-6 text-cyan-600 group-hover:text-white transition-colors"></i>
+                  </div>
+                  <span class="text-xs text-cyan-700 font-medium bg-cyan-50 px-2 py-0.5 rounded">스케일업</span>
+                </div>
+                <h3 class="text-base font-bold text-slate-900 group-hover:text-cyan-600 transition-colors mb-2">TIPS & 투자유치 IR</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">대덕특구 전용 펀드 및 민간 VC 투자심사역과의 매칭 데모데이 참가.</p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-cyan-600 group-hover:text-cyan-700 transition-colors">
+                <span>IR 신청</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </div>
+            </div>
+
+            <!-- Item 7 -->
+            <div onclick="openServiceModal('AI 지식재산(IP) 가치평가', '특허 포트폴리오의 공정 시장가치 산출 및 글로벌 크로스 라이선싱 수익화를 지원합니다.')" class="group relative p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl shadow-xs cursor-pointer flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-blue-600 group-hover:text-white transition-colors"></i>
+                  </div>
+                  <span class="text-xs text-slate-500 font-medium">IP 금융</span>
+                </div>
+                <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2">AI 지식재산(IP) 가치평가</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">특허 포트폴리오의 공정 시장가치 산출 및 크로스 라이선싱 수익화 설계.</p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-blue-600 group-hover:text-blue-700 transition-colors">
+                <span>평가 의뢰</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </div>
+            </div>
+
+            <!-- Item 8 -->
+            <div onclick="openServiceModal('산학연 융합 네트워킹', 'KAIST 및 26개 출연연 연구진과 매월 정기 기술살롱 및 산학협력 밋업에 참여하세요.')" class="group relative p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl shadow-xs cursor-pointer flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors">
+                    <i data-lucide="users" class="w-6 h-6 text-blue-600 group-hover:text-white transition-colors"></i>
+                  </div>
+                  <span class="text-xs text-slate-500 font-medium">정기 교류</span>
+                </div>
+                <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2">산학연 융합 네트워킹</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">KAIST, 출연연 연구진과 매월 정기 기술살롱 및 산학협력 밋업 참여.</p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-blue-600 group-hover:text-blue-700 transition-colors">
+                <span>일정 확인</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. [창직 보고서] 대덕특구 4대 핵심 미래 창직 모델 (Bright Theme) -->
+      <section id="job-models" class="py-20 bg-slate-50/70 border-t border-b border-slate-200 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div class="text-center max-w-4xl mx-auto mb-14">
+            <div class="text-xs font-bold text-blue-600 tracking-wider mb-2">
+              [창직 보고서] 대덕특구 4대 핵심 신직업군
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight break-keep">
+              원천기술과 산업 생태계를 혁신하는 <br class="hidden sm:inline" />4대 딥테크 <span class="whitespace-nowrap">창직 모델</span>
+            </h2>
+            <p class="text-base text-slate-600 mt-4 leading-relaxed max-w-2xl mx-auto break-keep">
+              과거에 없던 새로운 전문 직업을 정의하여 이공계 인재에게는 고부가가치 커리어를,
+              산업계에는 기술 병목을 해결하는 맞춤형 밸류체인 전문가를 제공합니다.
+            </p>
+          </div>
+
+          <!-- 4 Job Switcher Buttons in Crisp White -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-10" id="job-tab-buttons">
+            <button onclick="switchJobTab(0)" id="job-btn-0" class="p-4 rounded-xl text-left transition-all border cursor-pointer bg-white border-blue-600 shadow-md ring-1 ring-blue-600">
+              <div class="flex items-center justify-between text-xs mb-2">
+                <span class="font-mono font-bold text-blue-600">DTC-01</span>
+                <span class="text-slate-500 font-medium">핵심 전략 직무</span>
+              </div>
+              <div class="font-bold text-sm leading-snug text-slate-900">AI 딥테크 밸류체인 코디네이터</div>
+            </button>
+
+            <button onclick="switchJobTab(1)" id="job-btn-1" class="p-4 rounded-xl text-left transition-all border cursor-pointer bg-white border-slate-200 hover:border-slate-300 text-slate-600 hover:text-slate-900">
+              <div class="flex items-center justify-between text-xs mb-2">
+                <span class="font-mono font-medium text-slate-400">DTC-02</span>
+                <span class="text-slate-400 font-medium">기술 스핀오프</span>
+              </div>
+              <div class="font-bold text-sm leading-snug text-slate-700">출연연 공공기술 사업화 브릿지 매니저</div>
+            </button>
+
+            <button onclick="switchJobTab(2)" id="job-btn-2" class="p-4 rounded-xl text-left transition-all border cursor-pointer bg-white border-slate-200 hover:border-slate-300 text-slate-600 hover:text-slate-900">
+              <div class="flex items-center justify-between text-xs mb-2">
+                <span class="font-mono font-medium text-slate-400">DTC-03</span>
+                <span class="text-slate-400 font-medium">투자 & 성장</span>
+              </div>
+              <div class="font-bold text-sm leading-snug text-slate-700">딥테크 스케일업 펀딩 디렉터</div>
+            </button>
+
+            <button onclick="switchJobTab(3)" id="job-btn-3" class="p-4 rounded-xl text-left transition-all border cursor-pointer bg-white border-slate-200 hover:border-slate-300 text-slate-600 hover:text-slate-900">
+              <div class="flex items-center justify-between text-xs mb-2">
+                <span class="font-mono font-medium text-slate-400">DTC-04</span>
+                <span class="text-slate-400 font-medium">지식재산 자산화</span>
+              </div>
+              <div class="font-bold text-sm leading-snug text-slate-700">AI 특허·IP 가치평가 전략가</div>
+            </button>
+          </div>
+
+          <!-- Featured Job Bento Showcase in Crisp White -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 lg:p-10 shadow-lg">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              <!-- Left 7 Columns -->
+              <div class="lg:col-span-7 space-y-6">
+                <div>
+                  <div class="flex items-center gap-2 text-xs text-blue-600 font-semibold mb-1">
+                    <span id="job-en-title">AI Deep-Tech Value Chain Coordinator</span>
+                    <span aria-hidden="true" class="text-slate-300">·</span>
+                    <span id="job-category" class="text-slate-500 font-medium">밸류체인 연계</span>
+                  </div>
+                  <h3 id="job-title" class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+                    AI 딥테크 밸류체인 코디네이터
+                  </h3>
+                  <p id="job-subtitle" class="text-sm sm:text-base text-blue-600 font-semibold mt-1">
+                    공급망 병목 해소를 위한 국가 연구개발 성과와 기업의 정밀 매칭 전문가
+                  </p>
+                  <p id="job-overview" class="text-sm text-slate-600 mt-4 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    대덕연구개발특구 내 26개 정부출연연구기관의 첨단 원천기술 및 특허 데이터를 AI 기반으로 분석하고, 국내외 산업계 공급망(Value Chain)의 핵심 병목 지점과 결합하여 신제품 기획 및 기술이전을 이끄는 공급망 혁신 창직 모델입니다.
+                  </p>
+                </div>
+
+                <!-- Tasks -->
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
+                    <span class="w-1.5 h-4 bg-blue-600 rounded-sm"></span>
+                    핵심 수행 과제 및 직무 영역
+                  </h4>
+                  <div id="job-tasks" class="space-y-2.5 text-xs sm:text-sm text-slate-700">
+                    <!-- Populated via JS -->
+                  </div>
+                </div>
+
+                <!-- Impact Box -->
+                <div class="p-4 rounded-xl bg-blue-50 border border-blue-200 flex items-start gap-3">
+                  <i data-lucide="sparkles" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i>
+                  <div>
+                    <div class="text-xs font-bold text-blue-800">창직 기대 효과 및 경제적 파급력</div>
+                    <div id="job-impact" class="text-sm font-semibold text-slate-900 mt-0.5">
+                      신제품 개발 기간 평균 40% 단축 및 출연연 미활용 특허 사업화 매칭 성공률 2.8배 제고
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right 5 Columns -->
+              <div class="lg:col-span-5 space-y-6">
+                <!-- Image Spotlight -->
+                <div class="rounded-xl overflow-hidden border border-slate-200 shadow-md">
+                  <img
+                    src="/assets/images/deeptech_specialist_collaboration_1794012878517.jpg"
+                    alt="딥테크 전문 창직 인재 협업 현장"
+                    class="w-full h-48 object-cover"
+                  />
+                </div>
+
+                <!-- Competencies -->
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+                  <h4 class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <i data-lucide="award" class="w-4 h-4 text-blue-600"></i>
+                    필요 역량 및 우대 자격
+                  </h4>
+                  <ul id="job-skills" class="space-y-1.5 text-xs text-slate-600">
+                    <!-- Populated via JS -->
+                  </ul>
+                </div>
+
+                <!-- Career Path -->
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+                  <h4 class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <i data-lucide="trending-up" class="w-4 h-4 text-cyan-600"></i>
+                    커리어 로드맵 (3단계)
+                  </h4>
+                  <div id="job-career" class="space-y-1 text-xs text-slate-700">
+                    <!-- Populated via JS -->
+                  </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                  <button
+                    onclick="applyForCurrentJob()"
+                    class="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-xs sm:text-sm text-center transition-colors shadow-md cursor-pointer"
+                  >
+                    이 직무 창직·채용 상담하기
+                  </button>
+                  <button
+                    onclick="openJobReportModal()"
+                    class="w-full py-3 px-4 bg-white hover:bg-slate-50 text-slate-700 font-medium rounded-xl text-xs sm:text-sm text-center border border-slate-300 transition-colors cursor-pointer shadow-xs"
+                  >
+                    직무 상세 보고서 열람
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Interactive Value Chain Diagnosis Tool (Bright White Theme) -->
+      <section id="diagnosis-tool" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <div class="text-xs font-bold text-blue-600 tracking-wider mb-2">INTERACTIVE VALUE-CHAIN MATCHER</div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              AI 딥테크 밸류체인 & 창직 인터랙티브 진단기
+            </h2>
+            <p class="text-base text-slate-600 mt-4 leading-relaxed">
+              나의 대상 유형과 관심 딥테크 분야를 선택하면, 최적의 창직 직무와 협력 출연연구원, 정부지원사업 연계 로드맵을 즉시 도출해 드립니다.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Form Column (7 cols) -->
+            <div class="lg:col-span-7 bg-slate-50 rounded-2xl border border-slate-200 p-6 sm:p-8 space-y-7 shadow-xs">
+              <!-- Step 1: User Role -->
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-3 uppercase tracking-wider">
+                  1단계. 신청자 구분 (나의 현 위치)
+                </label>
+                <div class="grid grid-cols-3 gap-2.5" id="diag-role-group">
+                  <button type="button" onclick="setDiagRole('jobseeker', this)" class="diag-role-btn p-3 rounded-xl text-xs sm:text-sm font-semibold transition-all border cursor-pointer bg-blue-600 text-white border-blue-600 shadow-sm">
+                    예비 창직가 / 인재
+                  </button>
+                  <button type="button" onclick="setDiagRole('startup', this)" class="diag-role-btn p-3 rounded-xl text-xs sm:text-sm font-semibold transition-all border cursor-pointer bg-white text-slate-700 border-slate-200 hover:border-slate-300">
+                    스타트업 / 수요기업
+                  </button>
+                  <button type="button" onclick="setDiagRole('researcher', this)" class="diag-role-btn p-3 rounded-xl text-xs sm:text-sm font-semibold transition-all border cursor-pointer bg-white text-slate-700 border-slate-200 hover:border-slate-300">
+                    출연연 연구자 / 교수
+                  </button>
+                </div>
+              </div>
+
+              <!-- Step 2: Tech Field -->
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-3 uppercase tracking-wider">
+                  2단계. 핵심 딥테크 분야 선택
+                </label>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5" id="diag-field-group">
+                  <button type="button" onclick="setDiagField('ai', this)" class="diag-field-btn p-3 rounded-xl text-xs sm:text-sm font-medium transition-all border cursor-pointer bg-blue-50 text-blue-700 border-blue-400 shadow-xs">
+                    인공지능 · 빅데이터
+                  </button>
+                  <button type="button" onclick="setDiagField('quantum', this)" class="diag-field-btn p-3 rounded-xl text-xs sm:text-sm font-medium transition-all border cursor-pointer bg-white text-slate-700 border-slate-200 hover:border-slate-300">
+                    양자 · 차세대 반도체
+                  </button>
+                  <button type="button" onclick="setDiagField('bio', this)" class="diag-field-btn p-3 rounded-xl text-xs sm:text-sm font-medium transition-all border cursor-pointer bg-white text-slate-700 border-slate-200 hover:border-slate-300">
+                    첨단 바이오 · 헬스
+                  </button>
+                  <button type="button" onclick="setDiagField('aerospace', this)" class="diag-field-btn p-3 rounded-xl text-xs sm:text-sm font-medium transition-all border cursor-pointer bg-white text-slate-700 border-slate-200 hover:border-slate-300">
+                    우주항공 · 모빌리티
+                  </button>
+                  <button type="button" onclick="setDiagField('energy', this)" class="diag-field-btn p-3 rounded-xl text-xs sm:text-sm font-medium transition-all border cursor-pointer bg-white text-slate-700 border-slate-200 hover:border-slate-300">
+                    차세대 배터리 · 그린테크
+                  </button>
+                </div>
+              </div>
+
+              <!-- Step 3: Priority Goal -->
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-3 uppercase tracking-wider">
+                  3단계. 최우선 달성 목표
+                </label>
+                <div class="grid grid-cols-2 gap-2.5" id="diag-goal-group">
+                  <button type="button" onclick="setDiagGoal('career', this)" class="diag-goal-btn p-3 rounded-xl text-xs sm:text-sm font-medium transition-all border cursor-pointer bg-blue-50 text-blue-700 border-blue-400 shadow-xs">
+                    신직업 취·창직 진로 구축
+                  </button>
+                  <button type="button" onclick="setDiagGoal('commercialization', this)" class="diag-goal-btn p-3 rounded-xl text-xs sm:text-sm font-medium transition-all border cursor-pointer bg-white text-slate-700 border-slate-200 hover:border-slate-300">
+                    출연연 원천기술 사업화
+                  </button>
+                  <button type="button" onclick="setDiagGoal('bottleneck', this)" class="diag-goal-btn p-3 rounded-xl text-xs sm:text-sm font-medium transition-all border cursor-pointer bg-white text-slate-700 border-slate-200 hover:border-slate-300">
+                    서플라이체인 병목 해소
+                  </button>
+                  <button type="button" onclick="setDiagGoal('investment', this)" class="diag-goal-btn p-3 rounded-xl text-xs sm:text-sm font-medium transition-all border cursor-pointer bg-white text-slate-700 border-slate-200 hover:border-slate-300">
+                    TIPS 및 벤처 투자 유치
+                  </button>
+                </div>
+              </div>
+
+              <!-- Run Button -->
+              <div class="pt-2">
+                <button
+                  type="button"
+                  id="diag-submit-btn"
+                  onclick="executeDiagnosis()"
+                  class="w-full py-3.5 px-6 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/25 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <i data-lucide="sparkles" class="w-5 h-5 text-cyan-200"></i>
+                  <span>AI 밸류체인 정밀 매칭 분석 실행</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Result Column (5 cols) in Crisp White Card -->
+            <div class="lg:col-span-5" id="diag-result-card">
+              <div class="bg-white rounded-2xl border border-blue-200 p-6 sm:p-8 shadow-xl space-y-6 relative overflow-hidden">
+                <div class="border-b border-slate-100 pb-4">
+                  <div class="flex items-center gap-2 text-xs font-bold text-blue-600 mb-1">
+                    <span>AI 진단 결과 리포트</span>
+                    <span aria-hidden="true" class="text-slate-300">·</span>
+                    <span class="text-slate-500 font-medium">실시간 매칭</span>
+                  </div>
+                  <h3 id="res-role-title" class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                    AI 딥테크 밸류체인 코디네이터
+                  </h3>
+                  <p id="res-summary" class="text-xs text-slate-600 mt-2 leading-relaxed">
+                    인공지능 및 데이터 분석 역량을 기반으로 대덕특구의 방대한 원천기술과 테크 기업을 잇는 미래 핵심 직무로 최적합합니다.
+                  </p>
+                </div>
+
+                <div class="space-y-3.5 text-xs">
+                  <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                    <div class="text-slate-500 font-medium flex items-center gap-1.5 mb-1">
+                      <i data-lucide="building" class="w-3.5 h-3.5 text-blue-600"></i>
+                      추천 연계 연구기관
+                    </div>
+                    <div id="res-institute" class="font-bold text-slate-900 text-sm">
+                      한국전자통신연구원(ETRI) AI연구원
+                    </div>
+                  </div>
+
+                  <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                    <div class="text-slate-500 font-medium flex items-center gap-1.5 mb-1">
+                      <i data-lucide="layers" class="w-3.5 h-3.5 text-cyan-600"></i>
+                      추천 정부 지원 프로그램
+                    </div>
+                    <div id="res-program" class="font-bold text-slate-900 text-sm">
+                      대덕특구 딥테크 코디네이터 양성과정 1기 (교육비 국비지원)
+                    </div>
+                  </div>
+
+                  <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                    <div class="text-slate-500 font-medium mb-1.5">권장 실행 액션 플랜:</div>
+                    <ul id="res-actions" class="space-y-1.5 text-slate-700">
+                      <li class="flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5"></i>
+                        <span>대덕 딥테크 코디네이터 12주 정규 교육과정 지원하기</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5"></i>
+                        <span>ETRI 오픈 API 및 국가 특허 데이터 분석 실습 포트폴리오 구축</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5"></i>
+                        <span>특구 입주기업 대상 공급망 병목 해소 매칭 파일럿 과제 수행</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="pt-2">
+                  <button
+                    onclick="applyDiagnosisToConsultation()"
+                    class="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer"
+                  >
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span>진단 결과 바탕으로 1:1 상담 예약</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. 4-Step Value Chain Pipeline & Technical Network Asset (Bright) -->
+      <section id="about" class="py-20 bg-slate-50/70 border-t border-b border-slate-200 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="text-xs font-bold text-blue-600 tracking-wider mb-2">END-TO-END PIPELINE</div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight break-keep">
+              원천기술이 산업 밸류체인과 만나 <br />신직업으로 안착하는 프로세스
+            </h2>
+            <p class="text-base text-slate-600 mt-4 leading-relaxed">
+              연구실의 아이디어가 시장의 제품으로 구현되기까지, 4단계의 체계적인 프로세스로 지원합니다.
+            </p>
+          </div>
+
+          <!-- Technical Value Chain Asset Banner -->
+          <div class="mb-14 rounded-2xl overflow-hidden border border-slate-200 bg-white relative shadow-lg">
+            <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+              <div class="lg:col-span-7 p-6 sm:p-10 space-y-4">
+                <div class="text-xs font-bold text-blue-600 tracking-wider">
+                  대덕특구 AI 밸류체인 매핑 시스템
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight break-keep">
+                  출연연 R&D 연구실과 산업 제조 현장을 초연결하는 <br />데이터 인프라
+                </h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                  반도체·디스플레이·배터리 등 핵심 전략산업의 부품·소재 공급망 데이터를 실시간으로 모니터링하여,
+                  국가 연구기관이 보유한 공백기술 해소 특허를 찾아내고 최적의 창직 코디네이터를 매칭합니다.
+                </p>
+                <div class="pt-2 flex items-center gap-6 text-xs text-slate-600">
+                  <div>
+                    <div class="text-xl font-bold text-blue-600 font-mono">40%</div>
+                    <div>R&D 상용화 기간 단축</div>
+                  </div>
+                  <div class="w-px h-8 bg-slate-200"></div>
+                  <div>
+                    <div class="text-xl font-bold text-cyan-600 font-mono">2.8배</div>
+                    <div>기술이전 매칭 성공률</div>
+                  </div>
+                  <div class="w-px h-8 bg-slate-200"></div>
+                  <div>
+                    <div class="text-xl font-bold text-slate-900 font-mono">100%</div>
+                    <div>전담 코디네이터 밀착 케어</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lg:col-span-5 h-72 sm:h-96 lg:h-full relative min-h-[300px]">
+                <img
+                  src="/assets/images/ai_valuechain_network_1794012877614.jpg"
+                  alt="AI 및 반도체 밸류체인 네트워크 시각화"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 Steps Bento Cards in Crisp White -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="p-6 rounded-2xl bg-white border border-slate-200 relative group hover:border-blue-500 transition-all hover:-translate-y-1 shadow-xs hover:shadow-lg">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-mono font-extrabold text-blue-600">01</span>
+                <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center">
+                  <i data-lucide="database" class="w-5 h-5 text-blue-600"></i>
+                </div>
+              </div>
+              <h4 class="text-base font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">원천기술 발굴 & TRL 진단</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">대덕특구 26개 정부출연연구기관의 미활용 특허와 실험실 원천기술(TRL 3~6)을 체계적으로 수집·분류합니다.</p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-white border border-slate-200 relative group hover:border-blue-500 transition-all hover:-translate-y-1 shadow-xs hover:shadow-lg">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-mono font-extrabold text-blue-600">02</span>
+                <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center">
+                  <i data-lucide="network" class="w-5 h-5 text-blue-600"></i>
+                </div>
+              </div>
+              <h4 class="text-base font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">AI 밸류체인 병목 분석</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">전·후방 산업군(반도체, 바이오, 로봇 등)의 서플라이체인 결손 기술을 AI 특허 마이닝으로 정밀 탐색합니다.</p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-white border border-slate-200 relative group hover:border-blue-500 transition-all hover:-translate-y-1 shadow-xs hover:shadow-lg">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-mono font-extrabold text-blue-600">03</span>
+                <div class="w-10 h-10 rounded-xl bg-cyan-50 border border-cyan-100 flex items-center justify-center">
+                  <i data-lucide="users-2" class="w-5 h-5 text-cyan-600"></i>
+                </div>
+              </div>
+              <h4 class="text-base font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">창직 전문가 1:1 전담 매칭</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">AI 밸류체인 코디네이터와 브릿지 매니저가 현장에 투입되어 PoC 실증 기획 및 수요기업 공동 R&D를 총괄합니다.</p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-white border border-slate-200 relative group hover:border-blue-500 transition-all hover:-translate-y-1 shadow-xs hover:shadow-lg">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-mono font-extrabold text-blue-600">04</span>
+                <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center">
+                  <i data-lucide="rocket" class="w-5 h-5 text-blue-600"></i>
+                </div>
+              </div>
+              <h4 class="text-base font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">스케일업 & 연구소기업 설립</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">TIPS 프로그램, 대덕특구 모태펀드 및 KIAT 지원사업과 연계하여 초기 데스밸리를 극복하고 유니콘으로 도약합니다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Announcements & Notice Board (Benchmarking KIAT in Crisp White) -->
+      <section id="announcements" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+            <div>
+              <div class="text-xs font-bold text-blue-600 tracking-wider mb-2">OFFICIAL ANNOUNCEMENTS</div>
+              <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">
+                정부 R&D 및 대덕특구 창직 지원 공고
+              </h2>
+            </div>
+            <p class="text-sm text-slate-600 mt-2 md:mt-0 max-w-md">
+              KIAT, 과기정통부, 연구개발특구진흥재단의 최신 기술사업화 및 창직 육성 공고를 실시간 확인하세요.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Notice List Column (8 cols) -->
+            <div class="lg:col-span-8 space-y-6">
+              <!-- Category Filter & Search -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
+                <div class="flex flex-wrap items-center gap-1.5 p-1 bg-slate-100 rounded-xl border border-slate-200" id="ann-category-tabs">
+                  <button onclick="filterAnnouncements('전체', this)" class="ann-tab-btn px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors cursor-pointer bg-blue-600 text-white shadow-xs">전체</button>
+                  <button onclick="filterAnnouncements('기술사업화', this)" class="ann-tab-btn px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors cursor-pointer text-slate-600 hover:text-slate-900">기술사업화</button>
+                  <button onclick="filterAnnouncements('창직·인재', this)" class="ann-tab-btn px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors cursor-pointer text-slate-600 hover:text-slate-900">창직·인재</button>
+                  <button onclick="filterAnnouncements('TIPS·투자', this)" class="ann-tab-btn px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors cursor-pointer text-slate-600 hover:text-slate-900">TIPS·투자</button>
+                  <button onclick="filterAnnouncements('네트워킹', this)" class="ann-tab-btn px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors cursor-pointer text-slate-600 hover:text-slate-900">네트워킹</button>
+                </div>
+
+                <div class="relative">
+                  <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                  <input
+                    type="text"
+                    id="ann-search-input"
+                    oninput="handleAnnSearch(this.value)"
+                    placeholder="공고명 검색..."
+                    class="w-full sm:w-56 pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white"
+                  />
+                </div>
+              </div>
+
+              <!-- List Container -->
+              <div class="space-y-3" id="announcements-container">
+                <!-- Dynamically Rendered -->
+              </div>
+            </div>
+
+            <!-- Helpline Banner Column (4 cols) (High Contrast Blue Banner Benchmarking KIAT & Ansan) -->
+            <div class="lg:col-span-4 space-y-6">
+              <div class="p-6 rounded-2xl bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white shadow-xl space-y-5">
+                <div class="flex items-center justify-between">
+                  <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center">
+                    <i data-lucide="phone" class="w-5 h-5 text-cyan-200"></i>
+                  </div>
+                  <span class="text-xs font-bold px-2.5 py-1 bg-white/20 rounded-md">
+                    실시간 원스톱 지원
+                  </span>
+                </div>
+
+                <div>
+                  <div class="text-xs text-blue-100 font-medium">대덕 딥테크 밸류체인 안내 전화</div>
+                  <div class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-white font-mono">
+                    1661-8255
+                  </div>
+                  <div class="text-xs text-blue-100/90 mt-2 space-y-1">
+                    <div>· 주간 운영: 평일 09:00 ~ 18:00 (전담 코디네이터 상시 대기)</div>
+                    <div>· 야간 및 공휴일: 042-869-0114 (특구 비상 기술애로 접수)</div>
+                  </div>
+                </div>
+
+                <div class="pt-2 border-t border-white/20">
+                  <button
+                    onclick="scrollToConsultation()"
+                    class="w-full py-2.5 bg-white text-blue-700 hover:bg-blue-50 font-bold text-xs sm:text-sm rounded-xl transition-colors cursor-pointer shadow"
+                  >
+                    온라인 1:1 상담 예약하기
+                  </button>
+                </div>
+              </div>
+
+              <!-- Quick Notice Card in Crisp White -->
+              <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 shadow-xs">
+                <div class="flex items-center gap-2 text-xs font-bold text-slate-900">
+                  <i data-lucide="bell" class="w-4 h-4 text-blue-600"></i>
+                  <span>공공기술 매칭 알림 신청</span>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  희망하는 연구기관(ETRI, 화학연 등)이나 딥테크 키워드를 등록하시면 새 공고 및 특허 공개 시 카카오 알림톡으로 전송해 드립니다.
+                </p>
+                <button
+                  onclick="scrollToConsultation('공공기술 매칭 알림 신청')"
+                  class="text-xs text-blue-600 hover:text-blue-700 font-bold flex items-center gap-1 cursor-pointer pt-1"
+                >
+                  <span>알림 서비스 등록하기</span>
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Success Cases (Proof of Impact - Bright Theme) -->
+      <section id="cases" class="py-20 bg-slate-50/70 border-t border-b border-slate-200 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="text-xs font-bold text-blue-600 tracking-wider mb-2">PROVEN TRACK RECORD</div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              대덕 딥테크 창직 코디네이터가 이끌어낸 실증 성과
+            </h2>
+            <p class="text-base text-slate-600 mt-4 leading-relaxed">
+              원천기술과 산업계의 결합으로 탄생한 실제 성공 사례와 신직업 창직 성과를 확인하세요.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Case 1 -->
+            <div onclick="openCaseModal(0)" class="rounded-2xl bg-white border border-slate-200 hover:border-blue-500 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl shadow-xs p-6 sm:p-7 flex flex-col justify-between cursor-pointer group">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between text-xs text-slate-500 border-b border-slate-100 pb-3">
+                  <span class="font-bold text-blue-600">양자센서 · 첨단 반도체</span>
+                  <span class="font-medium text-slate-700">(주)퀀텀센싱</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                  출연연 양자센서 원천기술, 반도체 초정밀 계측 밸류체인 진입 성공
+                </h3>
+                <div class="text-xs text-slate-700 space-y-1 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                  <div class="flex items-center gap-1.5 text-blue-700 font-semibold">
+                    <i data-lucide="award" class="w-3.5 h-3.5 text-blue-600"></i>
+                    <span>전담: 이진우 코디네이터 (AI 밸류체인 1기)</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 text-slate-500">
+                    <i data-lucide="building" class="w-3.5 h-3.5 text-slate-400"></i>
+                    <span>협력: 한국표준과학연구원(KRISS) 양자센싱연구단</span>
+                  </div>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                  AI 밸류체인 코디네이터가 KRISS 양자 원자스핀 센서 특허를 발굴, 삼성 공급망 1차 벤더와의 PoC 실증 로드맵을 기획하여 연구소기업 등록 완료 및 시리즈 A 35억 원 투자 유치 성공.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-100 grid grid-cols-3 gap-2 text-center">
+                <div class="p-2.5 rounded-lg bg-slate-50">
+                  <div class="text-xs sm:text-sm font-extrabold text-blue-600 font-mono">35억 원</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">투자 유치</div>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-50">
+                  <div class="text-xs sm:text-sm font-extrabold text-slate-900 font-mono">14개월</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">개발 단축</div>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-50">
+                  <div class="text-xs sm:text-sm font-extrabold text-cyan-700 font-mono">120억/년</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">수입 대체</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 2 -->
+            <div onclick="openCaseModal(1)" class="rounded-2xl bg-white border border-slate-200 hover:border-blue-500 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl shadow-xs p-6 sm:p-7 flex flex-col justify-between cursor-pointer group">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between text-xs text-slate-500 border-b border-slate-100 pb-3">
+                  <span class="font-bold text-blue-600">차세대 세포유전자치료제</span>
+                  <span class="font-medium text-slate-700">(주)뉴로넥서스바이오</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                  KRIBB 미활용 유전자가위 특허 바스켓, 중견 제약사 라이선스 아웃
+                </h3>
+                <div class="text-xs text-slate-700 space-y-1 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                  <div class="flex items-center gap-1.5 text-blue-700 font-semibold">
+                    <i data-lucide="award" class="w-3.5 h-3.5 text-blue-600"></i>
+                    <span>전담: 김하영 브릿지 매니저 (GovTech 스핀오프)</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 text-slate-500">
+                    <i data-lucide="building" class="w-3.5 h-3.5 text-slate-400"></i>
+                    <span>협력: 한국생명공학연구원(KRIBB) 합성생물학연구소</span>
+                  </div>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                  공공기술 브릿지 매니저가 특허 클러스터링을 통해 권리 범위를 재설계하고, 코스닥 상장 제약사와의 마일스톤형 기술이전 계약 체결. 선급 기술료 8억 원 및 총 계약고 42억 원 달성.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-100 grid grid-cols-3 gap-2 text-center">
+                <div class="p-2.5 rounded-lg bg-slate-50">
+                  <div class="text-xs sm:text-sm font-extrabold text-blue-600 font-mono">42억 원</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">계약고</div>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-50">
+                  <div class="text-xs sm:text-sm font-extrabold text-slate-900 font-mono">6건 일괄</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">활용 특허</div>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-50">
+                  <div class="text-xs sm:text-sm font-extrabold text-cyan-700 font-mono">18명</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">고용 창출</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 3 -->
+            <div onclick="openCaseModal(2)" class="rounded-2xl bg-white border border-slate-200 hover:border-blue-500 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl shadow-xs p-6 sm:p-7 flex flex-col justify-between cursor-pointer group">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between text-xs text-slate-500 border-b border-slate-100 pb-3">
+                  <span class="font-bold text-blue-600">도심항공교통(UAM) 복합재</span>
+                  <span class="font-medium text-slate-700">(주)에어로모빌리티테크</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                  항우연 초경량 복합소재 기술 기반 TIPS 선정 및 유럽 항공망 실증
+                </h3>
+                <div class="text-xs text-slate-700 space-y-1 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                  <div class="flex items-center gap-1.5 text-blue-700 font-semibold">
+                    <i data-lucide="award" class="w-3.5 h-3.5 text-blue-600"></i>
+                    <span>전담: 최성민 펀딩 디렉터 (스케일업 투자)</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 text-slate-500">
+                    <i data-lucide="building" class="w-3.5 h-3.5 text-slate-400"></i>
+                    <span>협력: 한국항공우주연구원(KARI) 비행체체계연구부</span>
+                  </div>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                  스케일업 펀딩 디렉터가 항공 밸류체인 전용 IR 덱 패키징 후 대덕특구 모태펀드 및 한화 CVC 연계 투자 유치 리드, TIPS 딥테크 트랙(15억 원) 최종 선정.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-100 grid grid-cols-3 gap-2 text-center">
+                <div class="p-2.5 rounded-lg bg-slate-50">
+                  <div class="text-xs sm:text-sm font-extrabold text-blue-600 font-mono">28억 원</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">총 조달액</div>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-50">
+                  <div class="text-xs sm:text-sm font-extrabold text-slate-900 font-mono">15억 원</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">TIPS 지원</div>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-50">
+                  <div class="text-xs sm:text-sm font-extrabold text-cyan-700 font-mono">2개사</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">유럽 파트너</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. Quick Consultation Lead Capture Form (High-Converting Blue Banner from Swimming Pool Model) -->
+      <section id="consultation-section" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-900 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl relative overflow-hidden text-white">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              <!-- Left Column: Intro & Trust Points -->
+              <div class="lg:col-span-5 space-y-5">
+                <div class="flex items-center gap-2 text-xs font-bold text-cyan-300">
+                  <i data-lucide="shield" class="w-4 h-4"></i>
+                  <span>대덕특구 전담 코디네이터 1:1 사전 상담</span>
+                </div>
+
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug">
+                  대덕 딥테크 가치사슬 창직 컨설팅, <br />
+                  지금 바로 신청하세요!
+                </h3>
+
+                <p class="text-sm text-blue-100 leading-relaxed">
+                  출연연 원천기술 이전, 연구소기업 설립, TIPS 투자 연계 또는 창직 전문 커리어 전환에 관한
+                  궁금증을 기재해 주시면 전문 디렉터가 48시간 내에 유선 또는 대면 상담을 진행합니다.
+                </p>
+
+                <div class="space-y-2.5 pt-2 text-xs text-blue-100 font-medium">
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyan-300 shrink-0"></i>
+                    <span>사전 진단 및 1차 밸류체인 분석서 무료 제공</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyan-300 shrink-0"></i>
+                    <span>대덕 26개 정부출연연구기관 특허 풀 다이렉트 검색</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-cyan-300 shrink-0"></i>
+                    <span>정부 R&D / KIAT 챌린지 사업 신청 가이드라인 제공</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Consultation Form (Crisp White Form Container) -->
+              <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl shadow-xl text-slate-800">
+                <form id="consultation-form" onsubmit="handleConsultationSubmit(event)" class="space-y-4">
+                  <div id="form-error" class="hidden p-3 rounded-lg bg-red-50 border border-red-200 text-red-600 text-xs flex items-center gap-2">
+                    <i data-lucide="alert-circle" class="w-4 h-4 shrink-0"></i>
+                    <span id="form-error-text">입력 내용을 확인해 주세요.</span>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-xs font-bold text-slate-700 mb-1.5">
+                        성명 <span class="text-blue-600">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="form-name"
+                        required
+                        placeholder="홍길동"
+                        class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label class="block text-xs font-bold text-slate-700 mb-1.5">
+                        소속 기관 / 기업명
+                      </label>
+                      <input
+                        type="text"
+                        id="form-org"
+                        placeholder="예: 한국연구소 / 딥테크스타트업 / 예비창직"
+                        class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-xs font-bold text-slate-700 mb-1.5">
+                        연락처 / 이메일 <span class="text-blue-600">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="form-contact"
+                        required
+                        placeholder="010-0000-0000 또는 email@domain.com"
+                        class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label class="block text-xs font-bold text-slate-700 mb-1.5">
+                        상담 희망 분야
+                      </label>
+                      <select
+                        id="form-category"
+                        class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white cursor-pointer transition-colors"
+                      >
+                        <option value="AI 딥테크 밸류체인 코디네이터">AI 딥테크 밸류체인 코디네이터</option>
+                        <option value="출연연 공공기술 사업화 브릿지 매니저">출연연 공공기술 사업화 브릿지 매니저</option>
+                        <option value="딥테크 스케일업 펀딩 디렉터">딥테크 스케일업 펀딩 디렉터</option>
+                        <option value="AI 특허·IP 기술가치평가 & 라이선싱">AI 특허·IP 기술가치평가 & 라이선싱</option>
+                        <option value="기타 기술애로 및 R&D 사업공고">기타 기술애로 및 R&D 사업공고</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">
+                      문의 및 요청 사항
+                    </label>
+                    <textarea
+                      id="form-message"
+                      rows="3"
+                      placeholder="보유 기술 또는 해결하고 싶은 산업 밸류체인 과제를 간단히 적어주세요."
+                      class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white transition-colors resize-none"
+                    ></textarea>
+                  </div>
+
+                  <div class="flex items-center justify-between text-xs pt-1">
+                    <label class="flex items-center gap-2 cursor-pointer text-slate-600">
+                      <input
+                        type="checkbox"
+                        id="form-consent"
+                        checked
+                        required
+                        class="rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                      />
+                      <span>개인정보 수집 및 상담 이용 동의 [필수]</span>
+                    </label>
+                  </div>
+
+                  <div class="pt-2">
+                    <button
+                      type="submit"
+                      id="form-submit-btn"
+                      class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm transition-all shadow-md shadow-blue-600/30 flex items-center justify-center gap-2 cursor-pointer"
+                    >
+                      <i data-lucide="send" class="w-4 h-4"></i>
+                      <span>빠른 상담 신청 완료하기</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. Partner Network (Crisp White) -->
+      <section class="py-14 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-8">
+            <div class="text-xs font-bold text-slate-500 tracking-wider">
+              DAEDEOK INNOPOLIS INNOVATION PARTNERS
+            </div>
+            <p class="text-xs text-slate-400 mt-1">대덕 26개 정부출연연구기관 및 공공 혁신기관 협력 네트워크</p>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 items-center">
+            <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-center hover:border-blue-300 transition-colors shadow-xs">
+              <div class="font-extrabold text-sm text-slate-800 tracking-tight">KAIST</div>
+              <div class="text-[10px] text-slate-500 mt-0.5 truncate">한국과학기술원</div>
+            </div>
+            <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-center hover:border-blue-300 transition-colors shadow-xs">
+              <div class="font-extrabold text-sm text-slate-800 tracking-tight">ETRI</div>
+              <div class="text-[10px] text-slate-500 mt-0.5 truncate">한국전자통신연구원</div>
+            </div>
+            <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-center hover:border-blue-300 transition-colors shadow-xs">
+              <div class="font-extrabold text-sm text-slate-800 tracking-tight">KRICT</div>
+              <div class="text-[10px] text-slate-500 mt-0.5 truncate">한국화학연구원</div>
+            </div>
+            <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-center hover:border-blue-300 transition-colors shadow-xs">
+              <div class="font-extrabold text-sm text-slate-800 tracking-tight">KIMM</div>
+              <div class="text-[10px] text-slate-500 mt-0.5 truncate">한국기계연구원</div>
+            </div>
+            <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-center hover:border-blue-300 transition-colors shadow-xs">
+              <div class="font-extrabold text-sm text-slate-800 tracking-tight">KARI</div>
+              <div class="text-[10px] text-slate-500 mt-0.5 truncate">한국항공우주연구원</div>
+            </div>
+            <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-center hover:border-blue-300 transition-colors shadow-xs">
+              <div class="font-extrabold text-sm text-slate-800 tracking-tight">KRIBB</div>
+              <div class="text-[10px] text-slate-500 mt-0.5 truncate">한국생명공학연구원</div>
+            </div>
+            <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-center hover:border-blue-300 transition-colors shadow-xs">
+              <div class="font-extrabold text-sm text-slate-800 tracking-tight">KIAT</div>
+              <div class="text-[10px] text-slate-500 mt-0.5 truncate">한국산업기술진흥원</div>
+            </div>
+            <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-center hover:border-blue-300 transition-colors shadow-xs">
+              <div class="font-extrabold text-sm text-slate-800 tracking-tight">INNOPOLIS</div>
+              <div class="text-[10px] text-slate-500 mt-0.5 truncate">연구개발특구진흥재단</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 11. Footer (Official Grounded Charcoal/Dark Slate for Public Authority Feeling) -->
+    <footer class="bg-slate-900 border-t border-slate-800 text-slate-400 text-xs py-14">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-slate-800 pb-8">
+          <div>
+            <div class="text-base font-bold text-white tracking-tight flex items-center gap-2">
+              <span class="w-2 h-2 rounded-sm bg-blue-500"></span>
+              <span>대덕 딥테크 밸류체인 혁신본부</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-1">
+              DAEDEOK DEEP-TECH VALUE CHAIN & JOB CREATION PLATFORM
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-6 text-xs text-slate-300">
+            <a href="#about" class="hover:text-white transition-colors">플랫폼 소개</a>
+            <a href="#job-models" class="hover:text-white transition-colors">4대 창직 모델</a>
+            <a href="#diagnosis-tool" class="hover:text-white transition-colors">AI 밸류체인 진단기</a>
+            <a href="#announcements" class="hover:text-white transition-colors">지원사업 공고</a>
+            <a href="#cases" class="hover:text-white transition-colors">성공 사례</a>
+            <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="flex items-center gap-1.5 text-blue-400 hover:text-cyan-300 transition-colors cursor-pointer">
+              <span>맨 위로</span>
+              <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-slate-400 text-xs">
+          <div>
+            <div class="font-semibold text-slate-200 mb-2">운영 및 주관</div>
+            <p>대덕연구개발특구 딥테크 창직혁신협의회</p>
+            <p class="mt-1">협력: 한국산업기술진흥원(KIAT), 연구개발특구진흥재단</p>
+          </div>
+          <div>
+            <div class="font-semibold text-slate-200 mb-2">본부 위치</div>
+            <p>대전광역시 유성구 대덕대로 593 대덕테크비즈센터(TBC)</p>
+            <p class="mt-1">서울사무소: 서울시 강남구 테헤란로 305 한국기술센터</p>
+          </div>
+          <div>
+            <div class="font-semibold text-slate-200 mb-2">고객 및 기술문의</div>
+            <p class="text-slate-100 font-bold">대표전화: 1661-8255 (평일 09:00~18:00)</p>
+            <p class="mt-1">야간상담: 042-869-0114 | 팩스: 042-869-0119</p>
+            <p>이메일: help@daedeok-deeptech.kr</p>
+          </div>
+          <div>
+            <div class="font-semibold text-slate-200 mb-2">시스템 이용안내</div>
+            <p>본 플랫폼은 대덕특구 공공기술 사업화 촉진 및 신직업군 창출을 위해 정부 지원으로 운영됩니다.</p>
+          </div>
+        </div>
+
+        <div class="pt-6 border-t border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-slate-500 text-[11px]">
+          <div class="flex flex-wrap items-center gap-4">
+            <span class="text-slate-300 font-medium hover:underline cursor-pointer">개인정보처리방침</span>
+            <span>·</span>
+            <span class="hover:text-slate-300 cursor-pointer">이용약관</span>
+            <span>·</span>
+            <span class="hover:text-slate-300 cursor-pointer">저작권보호정책</span>
+            <span>·</span>
+            <span class="hover:text-slate-300 cursor-pointer">이메일무단수집거부</span>
+          </div>
+
+          <div>
+            © 2026 DAEDEOK DEEP-TECH VALUE CHAIN HEADQUARTERS. ALL RIGHTS RESERVED.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Universal Modal System in Crisp White -->
+    <div id="universal-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+      <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs" onclick="closeModal()"></div>
+      <div class="relative w-full max-w-2xl bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden z-10 my-8 max-h-[90vh] flex flex-col">
+        <div class="px-6 py-4 border-b border-slate-200 flex items-start justify-between gap-4 bg-slate-50">
+          <div>
+            <div id="modal-subtitle" class="text-xs font-bold text-blue-600 mb-0.5">안내</div>
+            <h3 id="modal-title" class="text-lg font-bold text-slate-900 tracking-tight">상세 정보</h3>
+          </div>
+          <button onclick="closeModal()" class="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-200 transition-colors cursor-pointer" aria-label="닫기">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+        <div id="modal-body" class="p-6 overflow-y-auto space-y-4 text-xs sm:text-sm text-slate-700">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Application Script Data & Logic -->
+    <script>
+      // 1. Data Store
+      const JOBS = [
+        {
+          code: 'DTC-01',
+          tag: '핵심 전략 직무',
+          category: '밸류체인 연계',
+          title: 'AI 딥테크 밸류체인 코디네이터',
+          enTitle: 'AI Deep-Tech Value Chain Coordinator',
+          subtitle: '공급망 병목 해소를 위한 국가 연구개발 성과와 기업의 정밀 매칭 전문가',
+          overview: '대덕연구개발특구 내 26개 정부출연연구기관의 첨단 원천기술 및 특허 데이터를 AI 기반으로 분석하고, 국내외 산업계 공급망(Value Chain)의 핵심 병목 지점과 결합하여 신제품 기획 및 기술이전을 이끄는 공급망 혁신 창직 모델입니다.',
+          tasks: [
+            '대덕특구 출연연(ETRI, 화학연, 기계연 등) 보유 딥테크 특허 군집 및 기술성숙도(TRL 3~6) 진단',
+            '전·후방 산업군(반도체, 바이오, 로봇 등) 밸류체인 데이터맵 구축 및 공급망 결손 기술 매칭',
+            '수요기업 맞춤형 공동 R&D 기획서 작성 및 PoC(개념검증) 실증 로드맵 수립',
+            '정부 R&D 지원사업(KIAT 챌린지, 과기정통부 특구사업) 연계 컨소시엄 구성 및 사업화 관리'
+          ],
+          impact: '신제품 개발 기간 평균 40% 단축 및 출연연 미활용 특허 사업화 매칭 성공률 2.8배 제고',
+          skills: [
+            '이공계열 기초 지식 및 첨단 딥테크 산업 트렌드 이해도',
+            '생성형 AI 및 데이터 분석 툴(특허 마이닝, 공급망 분석 툴) 활용 능력',
+            '산학연 이해관계자 커뮤니케이션 및 기술사업화 프로젝트 매니지먼트(PMP)'
+          ],
+          career: [
+            '1단계: 딥테크 밸류체인 분석가',
+            '2단계: 공공기술 사업화 전담 코디네이터',
+            '3단계: 대덕특구 수석 밸류체인 디렉터 / 기술지주회사 투자심사역'
+          ]
+        },
+        {
+          code: 'DTC-02',
+          tag: '기술 스핀오프',
+          category: '기술사업화',
+          title: '출연연 공공기술 사업화 브릿지 매니저',
+          enTitle: 'GovTech Commercialization Bridge Manager',
+          subtitle: '연구실(Lab)에서 시장(Market)으로의 신속한 스핀오프 및 연구소기업 설립 자문가',
+          overview: '국가 연구소 실험실의 우수 기술이 사장되지 않고 시장에서 상용화될 수 있도록 기술성·시장성 실증, 연구소기업 등록 요건 충족, 법률·조세특례 가이드 및 초기 시드 매칭을 원스톱으로 지원하는 현장 밀착형 매니저입니다.',
+          tasks: [
+            '출연연 실험실 창업팀 대상 비즈니스 모델(BM) 수립 및 시장 적합성(PMF) 검증',
+            '연구개발특구진흥재단 기준 연구소기업 설립 인가 및 공공기관 현물출자 가치평가 지원',
+            '규제 샌드박스 및 기술 실증 테스트베드(대전 테크노파크, 특구 테스트베드) 확보 연계',
+            '실험실 연구원과 외부 전문경영인(CEO) 간 코파운더 매칭 및 지분 구조 설계'
+          ],
+          impact: '연구소기업 설립 소요기간 6개월 이상 단축 및 창업 3년 생존율 85% 달성',
+          skills: [
+            '기술이전촉진법, 연구개발특구법 및 공공기술 사업화 제도 이해',
+            '초기 기술 스타트업 비즈니스 모델링 및 시장 진입(GTM) 전략 기획력',
+            '출연연 연구진과의 원활한 소통 역량 및 공공기관 행정 절차 이해'
+          ],
+          career: [
+            '1단계: 공공기술 실증 매니저',
+            '2단계: 연구소기업 스핀오프 총괄 브릿지 매니저',
+            '3단계: 특구 창업기획사 대표 파트너 / 딥테크 컴퍼니빌더'
+          ]
+        },
+        {
+          code: 'DTC-03',
+          tag: '투자 & 성장',
+          category: '자본 유치',
+          title: '딥테크 스케일업 펀딩 디렉터',
+          enTitle: 'Deep-Tech Scale-up & Investment Director',
+          subtitle: '시드부터 TIPS, 시리즈 A/B까지 딥테크 전용 펀드와 후속 투자를 유치하는 전략가',
+          overview: '대덕특구 소재 원천기술 스타트업이 데스밸리(Death Valley)를 극복하고 유니콘 기업으로 스케일업할 수 있도록, 딥테크 전문 기술실사(Tech DD) 기반의 IR 덱 패키징과 모태펀드·모험자본 투자 유치를 총괄하는 전문 직무입니다.',
+          tasks: [
+            '딥테크 스타트업의 원천기술 기술성 평가 및 재무·성장 시나리오 모델링',
+            'TIPS(민간투자주도형 기술창업지원), KIAT 스케일업 펀드 등 정부 출자 연계 전략 수립',
+            '대덕특구 벤처캐피털(VC), 신기술금융사, 대기업 CVC 대상 프라이빗 IR 세션 기획 및 리드',
+            '후속 라운드 투자 유치 및 글로벌 밸류체인 진출을 위한 해외 펀딩 네트워크 연결'
+          ],
+          impact: '평균 투자 유치액 25억 원 달성 및 정부 TIPS 프로그램 선정 합격률 74% 기록',
+          skills: [
+            '딥테크 기술 실사(Technical Due Diligence) 및 밸류에이션 평가 역량',
+            '벤처투자 생태계 네트워크 및 투자계약서(RCPS, CB 등) 협상 실무',
+            '영어 피칭 및 글로벌 VC 대상 딜메이킹 커뮤니케이션'
+          ],
+          career: [
+            '1단계: 딥테크 IR 전략 컨설턴트',
+            '2단계: 스케일업 펀딩 리드 디렉터',
+            '3단계: 딥테크 벤처캐피털 펀드매니저 / 파트너'
+          ]
+        },
+        {
+          code: 'DTC-04',
+          tag: '지식재산 자산화',
+          category: 'IP & 라이선싱',
+          title: 'AI 특허·IP 기술가치평가 & 라이선싱 전략가',
+          enTitle: 'AI IP Valuation & Licensing Strategist',
+          subtitle: '미활용 특허의 숨은 가치를 AI로 발굴하여 수익화 및 크로스 라이선싱을 설계하는 전문가',
+          overview: '대덕특구 정부출연연구기관에 누적된 수만 건의 미활용 특허를 LLM 및 시맨틱 특허 분석 엔진으로 재조명하고, 국내외 글로벌 기업과의 크로스 라이선싱 및 특허 바스켓 팩토링을 통해 실질적인 기술료 수익을 창출하는 지식재산 창직 모델입니다.',
+          tasks: [
+            'AI 기반 글로벌 특허 데이터 마이닝을 통한 특허 무효화 방어 및 공백기술 탐색',
+            '출연연 핵심 특허 포트폴리오 패키징 및 DCF/로열티공제법 기반 공정 기술가치평가',
+            '글로벌 수요기업 대상 크로스 라이선싱 계약 협상 및 특허 분쟁 리스크 사전 차단',
+            '기술보증기금, 산업은행 연계 IP 담보대출 및 IP 보증 금융 구조 설계'
+          ],
+          impact: '특허 바스켓 기술이전 계약 건당 가치 3.2배 증대 및 유휴 특허 활용률 35% 달성',
+          skills: [
+            '특허법률 지식(변리사 우대) 또는 특허분석 3년 이상 실무 경력',
+            'AI 특허 분석 툴(WIPS, Kipris 등) 고급 활용 능력',
+            '국제 기술이전 계약(Licensing Agreement) 검토 및 지식재산 금융 지식'
+          ],
+          career: [
+            '1단계: AI 특허 데이터 분석가',
+            '2단계: 지식재산 라이선싱 수석 전략가',
+            '3단계: 글로벌 IP 금융 투자 전문위원 / 특허투자회사 파트너'
+          ]
+        }
+      ];
+
+      const ANNOUNCEMENTS = [
+        {
+          id: 'ann-1',
+          category: '창직·인재',
+          status: '접수중',
+          title: '2026년 대덕 딥테크 AI 밸류체인 코디네이터 전문인력 양성과정 (1기) 교육생 모집',
+          agency: '대덕연구개발특구진흥재단 / KIAT',
+          budget: '교육비 전액 국비지원 + 월 120만원 연구장려금',
+          target: '이공계 석·박사 졸업(예정)자 및 기술경영 경력 3년 이상자',
+          startDate: '2026-11-01',
+          endDate: '2026-11-30',
+          views: 1840,
+          content: '대덕특구 26개 정부출연연구기관의 원천기술을 산업계 공급망과 연결하는 차세대 딥테크 밸류체인 코디네이터를 양성합니다. 실전 특허 마이닝, TRL 실증 기획, 기업 매칭 프로젝트를 12주간 집중 수행합니다.',
+          attachment: '2026_대덕특구_창직코디네이터_모집공고문.pdf'
+        },
+        {
+          id: 'ann-2',
+          category: '기술사업화',
+          status: '진행중',
+          title: '2026년 정부출연연구기관 우수 공공기술 이전 및 PoC 실증지원사업 공고',
+          agency: '한국산업기술진흥원(KIAT)',
+          budget: '과제당 최대 2.5억 원 이내 지원',
+          target: '대덕특구 출연연 기술을 이전받아 상용화하고자 하는 중소·중견 딥테크 기업',
+          startDate: '2026-10-15',
+          endDate: '2026-12-15',
+          views: 3120,
+          content: 'ETRI, 화학연, 기계연 등 출연연 보유 특허를 기반으로 시장 출시 전 제품화 검증(PoC) 및 시제품 제작 비용을 직접 지원하는 매칭 펀드 사업입니다.',
+          attachment: '2026_공공기술_PoC실증지원사업_신청서식.hwp'
+        },
+        {
+          id: 'ann-3',
+          category: 'TIPS·투자',
+          status: '마감임박',
+          title: '제4회 대덕 딥테크 밸류체인 스케일업 IR 데모데이 참가 기업 모집',
+          agency: '연구개발특구 딥테크 투자협의회',
+          budget: '총 50억 원 규모 펀드 매칭 및 TIPS 추천권 3개사 부여',
+          target: '시리즈 A 투자 유치를 희망하는 연구소기업 및 대덕특구 스타트업',
+          startDate: '2026-10-20',
+          endDate: '2026-11-15',
+          views: 2450,
+          content: '국내 최고 수준의 딥테크 전문 VC 심사역 15인이 직접 심사하는 프라이빗 IR 데모데이입니다. 사전 1:1 펀딩 디렉터 코칭이 제공됩니다.',
+          attachment: '대덕_스케일업_IR데모데이_안내문.pdf'
+        },
+        {
+          id: 'ann-4',
+          category: '기술사업화',
+          status: '상시',
+          title: '대덕특구 미활용 특허 바스켓 무상 양도 및 통상실시권 기술이전 수요조사',
+          agency: '국가과학기술연구회(NST)',
+          budget: '기술료 감면 및 이전 비용 지원',
+          target: '신규 사업 아이템을 발굴 중인 제조업 및 테크 스타트업',
+          startDate: '2026-01-01',
+          endDate: '2026-12-31',
+          views: 4580,
+          content: '출연연구기관 26개 기관의 유휴 우수 특허 3,200여 건에 대한 무상 양도 및 파격적인 조건의 실시권 계약을 상시 지원합니다.',
+          attachment: '출연연_미활용특허_데이터베이스_요약목록.xlsx'
+        },
+        {
+          id: 'ann-5',
+          category: '네트워킹',
+          status: '접수중',
+          title: '2026 대덕 딥테크 산학연관 교류 포럼 : AI와 첨단제조 밸류체인의 융합',
+          agency: '대전광역시 / 대덕연구개발특구',
+          budget: '참가비 무료 (만찬 및 네트워킹 포함)',
+          target: '산학연 연구책임자, 기업 CEO, 창직 준비 전문가 누구나',
+          startDate: '2026-11-05',
+          endDate: '2026-11-25',
+          views: 1290,
+          content: '대덕의 원천기술과 현대차, 삼성전자, SK하이닉스 등 전방 산업군 서플라이체인의 연결을 논의하는 대형 테크 포럼입니다.',
+          attachment: '2026_산학연관교류포럼_프로그램북.pdf'
+        }
+      ];
+
+      const CASES = [
+        {
+          company: '(주)퀀텀센싱',
+          field: '양자센서 · 첨단 반도체',
+          title: '출연연 양자센서 원천기술, 반도체 초정밀 계측 밸류체인 진입 성공',
+          coordinator: '이진우 코디네이터 (AI 밸류체인 1기)',
+          lab: '한국표준과학연구원(KRISS) 양자센싱연구단',
+          challenge: '국내 반도체 패키징 라인의 초미세 결함 검출을 위해 해외 고가 계측기에 의존하던 중, 원천기술 부재로 납품 장벽에 직면.',
+          solution: 'AI 밸류체인 코디네이터가 KRISS 양자 원자스핀 센서 특허를 발굴, 삼성 공급망 1차 벤더와의 PoC 실증 로드맵을 기획.',
+          outcome: '연구소기업 등록 완료 및 시리즈 A 35억 원 투자 유치, 외산 계측장비 대비 단가 45% 절감 및 수입 대체 성공.',
+          metrics: [
+            { label: '투자 유치', val: '35억 원' },
+            { label: '개발 단축', val: '14개월' },
+            { label: '수입 대체', val: '연 120억 원' }
+          ]
+        },
+        {
+          company: '(주)뉴로넥서스바이오',
+          field: '차세대 세포유전자치료제',
+          title: 'KRIBB 미활용 유전자가위 특허 바스켓, 중견 제약사 라이선스 아웃',
+          coordinator: '김하영 브릿지 매니저 (GovTech 스핀오프)',
+          lab: '한국생명공학연구원(KRIBB) 합성생물학연구소',
+          challenge: '연구소 내 잠자고 있던 6건의 유전자 치료 전달체 특허가 복잡한 실시권 분쟁 우려로 사업화 추진이 중단된 상태.',
+          solution: '공공기술 브릿지 매니저가 특허 클러스터링을 통해 권리 범위를 재설계하고, 코스닥 상장 제약사와의 마일스톤형 기술이전 계약 체결.',
+          outcome: '선급 기술료 8억 원 및 순매출 3.5% 경상기술료 계약 성사, 연구책임자 스핀오프 벤처 공동 창업 연계.',
+          metrics: [
+            { label: '계약고', val: '42억 원' },
+            { label: '활용 특허', val: '6건 일괄' },
+            { label: '신규 고용', val: '18명' }
+          ]
+        },
+        {
+          company: '(주)에어로모빌리티테크',
+          field: '도심항공교통(UAM) 복합재',
+          title: '항우연 초경량 복합소재 기술 기반 TIPS 선정 및 유럽 항공망 실증 진입',
+          coordinator: '최성민 펀딩 디렉터 (스케일업 투자)',
+          lab: '한국항공우주연구원(KARI) 비행체체계연구부',
+          challenge: '우수한 탄소복합재 성형 특허를 가졌으나, 항공 규제 인증(FAA/EASA) 및 막대한 양산 자금 조달 방안 부재.',
+          solution: '스케일업 펀딩 디렉터가 항공 밸류체인 전용 IR 덱 패키징 후 대덕특구 모태펀드 및 한화 CVC 연계 투자 유치 리드.',
+          outcome: 'TIPS 딥테크 트랙(15억 원) 최종 선정, 유럽 UAM 기체 제조사와 전략적 제휴(MOU) 및 공급망 등록 완료.',
+          metrics: [
+            { label: '총 조달액', val: '28억 원' },
+            { label: 'TIPS 지원', val: '15억 원' },
+            { label: '해외 파트너', val: '유럽 2개사' }
+          ]
+        }
+      ];
+
+      let currentJobIndex = 0;
+      let diagState = { role: 'jobseeker', field: 'ai', goal: 'career' };
+      let currentAnnCategory = '전체';
+      let currentAnnSearch = '';
+
+      // 2. UI Helpers
+      function showToast(msg) {
+        const toast = document.getElementById('toast');
+        const msgEl = document.getElementById('toast-message');
+        msgEl.textContent = msg;
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-20', 'opacity-0');
+        }, 3200);
+      }
+
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+      }
+
+      function scrollToConsultation(category) {
+        if (category) {
+          const catSelect = document.getElementById('form-category');
+          for (let i = 0; i < catSelect.options.length; i++) {
+            if (catSelect.options[i].value.includes(category) || category.includes(catSelect.options[i].value)) {
+              catSelect.selectedIndex = i;
+              break;
+            }
+          }
+        }
+        const el = document.getElementById('consultation-section');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      function handleHeroSearch(e) {
+        e.preventDefault();
+        const input = document.getElementById('hero-search-input');
+        const q = input.value.trim();
+        if (q) {
+          showToast(`"${q}" 관련 대덕특구 특허 42건 및 맞춤형 코디네이터가 검색되었습니다.`);
+          document.getElementById('announcements').scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+
+      function searchKeyword(kw) {
+        document.getElementById('hero-search-input').value = kw;
+        showToast(`"${kw}" 관련 대덕특구 특허 및 지원사업을 조회했습니다.`);
+        document.getElementById('announcements').scrollIntoView({ behavior: 'smooth' });
+      }
+
+      // 3. Job Tabs System
+      function switchJobTab(index) {
+        currentJobIndex = index;
+        const job = JOBS[index];
+
+        // Update tab buttons
+        for (let i = 0; i < 4; i++) {
+          const btn = document.getElementById(`job-btn-${i}`);
+          if (i === index) {
+            btn.className = 'p-4 rounded-xl text-left transition-all border cursor-pointer bg-white border-blue-600 shadow-md ring-1 ring-blue-600';
+            btn.querySelector('.font-mono').className = 'font-mono font-bold text-blue-600';
+            btn.querySelector('.font-bold').className = 'font-bold text-sm leading-snug text-slate-900';
+          } else {
+            btn.className = 'p-4 rounded-xl text-left transition-all border cursor-pointer bg-white border-slate-200 hover:border-slate-300 text-slate-600 hover:text-slate-900';
+            btn.querySelector('.font-mono').className = 'font-mono font-medium text-slate-400';
+            btn.querySelector('.font-bold').className = 'font-bold text-sm leading-snug text-slate-700';
+          }
+        }
+
+        // Update panel
+        document.getElementById('job-en-title').textContent = job.enTitle;
+        document.getElementById('job-category').textContent = job.category;
+        document.getElementById('job-title').textContent = job.title;
+        document.getElementById('job-subtitle').textContent = job.subtitle;
+        document.getElementById('job-overview').textContent = job.overview;
+        document.getElementById('job-impact').textContent = job.impact;
+
+        // Tasks
+        const tasksEl = document.getElementById('job-tasks');
+        tasksEl.innerHTML = job.tasks.map(t => `
+          <div class="flex items-start gap-3">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-600 shrink-0 mt-0.5"></i>
+            <span>${t}</span>
+          </div>
+        `).join('');
+
+        // Skills
+        const skillsEl = document.getElementById('job-skills');
+        skillsEl.innerHTML = job.skills.map(s => `
+          <li class="flex items-start gap-2">
+            <span class="text-blue-600 font-bold">·</span>
+            <span>${s}</span>
+          </li>
+        `).join('');
+
+        // Career
+        const careerEl = document.getElementById('job-career');
+        careerEl.innerHTML = job.career.map((c, i) => `
+          <div class="flex items-center gap-2">
+            <span class="w-4 h-4 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-[10px] font-bold font-mono">
+              ${i + 1}
+            </span>
+            <span>${c}</span>
+          </div>
+        `).join('');
+
+        lucide.createIcons();
+      }
+
+      function applyForCurrentJob() {
+        const job = JOBS[currentJobIndex];
+        scrollToConsultation(job.title);
+      }
+
+      function openJobReportModal() {
+        const job = JOBS[currentJobIndex];
+        openModal(
+          job.title,
+          `[창직 보고서 전문] 직무코드 ${job.code} · ${job.category}`,
+          `
+            <div class="space-y-4 text-slate-800">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <div class="text-xs text-blue-600 font-bold mb-1">직무 개요 및 정의</div>
+                <p class="text-xs leading-relaxed text-slate-700">${job.overview}</p>
+              </div>
+
+              <div>
+                <div class="text-xs font-bold text-slate-900 mb-2">주요 직무 수행 영역 (Key Tasks)</div>
+                <ul class="space-y-1.5 text-xs text-slate-700">
+                  ${job.tasks.map(t => `<li class="flex items-start gap-2"><span class="text-blue-600 font-bold">✔</span><span>${t}</span></li>`).join('')}
+                </ul>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                  <div class="font-bold text-slate-900 mb-1">핵심 역량 및 우대사항</div>
+                  <ul class="space-y-1 text-slate-600">
+                    ${job.skills.map(s => `<li>· ${s}</li>`).join('')}
+                  </ul>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                  <div class="font-bold text-slate-900 mb-1">창직 기대 효과</div>
+                  <p class="text-slate-700 font-medium">${job.impact}</p>
+                </div>
+              </div>
+
+              <div>
+                <div class="text-xs font-bold text-slate-900 mb-2">3단계 커리어 패스</div>
+                <div class="space-y-1.5 text-xs text-slate-700">
+                  ${job.career.map((c, i) => `
+                    <div class="p-2 rounded-lg bg-slate-50 border border-slate-200 flex items-center gap-2">
+                      <span class="w-4 h-4 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-bold">${i + 1}</span>
+                      <span>${c}</span>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <div class="pt-2">
+                <button onclick="closeModal(); scrollToConsultation('${job.title}');" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-xs text-center transition-colors shadow">
+                  이 직무로 창직·인재 상담 신청
+                </button>
+              </div>
+            </div>
+          `
+        );
+      }
+
+      // 4. Interactive Value Chain Diagnosis Logic
+      function setDiagRole(role, btn) {
+        diagState.role = role;
+        document.querySelectorAll('.diag-role-btn').forEach(b => {
+          b.className = 'diag-role-btn p-3 rounded-xl text-xs sm:text-sm font-semibold transition-all border cursor-pointer bg-white text-slate-700 border-slate-200 hover:border-slate-300';
+        });
+        btn.className = 'diag-role-btn p-3 rounded-xl text-xs sm:text-sm font-semibold transition-all border cursor-pointer bg-blue-600 text-white border-blue-600 shadow-sm';
+      }
+
+      function setDiagField(field, btn) {
+        diagState.field = field;
+        document.querySelectorAll('.diag-field-btn').forEach(b => {
+          b.className = 'diag-field-btn p-3 rounded-xl text-xs sm:text-sm font-medium transition-all border cursor-pointer bg-white text-slate-700 border-slate-200 hover:border-slate-300';
+        });
+        btn.className = 'diag-field-btn p-3 rounded-xl text-xs sm:text-sm font-medium transition-all border cursor-pointer bg-blue-50 text-blue-700 border-blue-400 shadow-xs';
+      }
+
+      function setDiagGoal(goal, btn) {
+        diagState.goal = goal;
+        document.querySelectorAll('.diag-goal-btn').forEach(b => {
+          b.className = 'diag-goal-btn p-3 rounded-xl text-xs sm:text-sm font-medium transition-all border cursor-pointer bg-white text-slate-700 border-slate-200 hover:border-slate-300';
+        });
+        btn.className = 'diag-goal-btn p-3 rounded-xl text-xs sm:text-sm font-medium transition-all border cursor-pointer bg-blue-50 text-blue-700 border-blue-400 shadow-xs';
+      }
+
+      function executeDiagnosis() {
+        const btn = document.getElementById('diag-submit-btn');
+        btn.innerHTML = `<span class="animate-spin mr-2">⚙</span><span>대덕특구 밸류체인 알고리즘 연산 중...</span>`;
+        btn.disabled = true;
+
+        setTimeout(() => {
+          btn.innerHTML = `<i data-lucide="sparkles" class="w-5 h-5 text-cyan-200"></i><span>AI 밸류체인 정밀 매칭 분석 실행</span>`;
+          btn.disabled = false;
+
+          let roleTitle = 'AI 딥테크 밸류체인 코디네이터';
+          let institute = '한국전자통신연구원(ETRI) AI연구원';
+          let program = '대덕특구 딥테크 코디네이터 양성과정 1기 (교육비 국비지원)';
+          let summary = '인공지능 및 데이터 분석 역량을 기반으로 대덕특구의 방대한 원천기술과 테크 기업을 잇는 미래 핵심 직무로 최적합합니다.';
+          let actions = [
+            '대덕 딥테크 코디네이터 12주 정규 교육과정 지원하기',
+            'ETRI 오픈 API 및 국가 특허 데이터 분석 실습 포트폴리오 구축',
+            '특구 입주기업 대상 공급망 병목 해소 매칭 파일럿 과제 수행'
+          ];
+
+          if (diagState.role === 'startup') {
+            if (diagState.goal === 'investment') {
+              roleTitle = '딥테크 스케일업 펀딩 디렉터';
+              institute = '연구개발특구 딥테크 투자협의회 & KAIST 청년창업지주';
+              program = '2026 대덕 딥테크 TIPS 추천 프로그램 및 프라이빗 IR 데모데이';
+              summary = '기술실사(Tech DD) 팩트를 정밀 보강하여 대덕특구 모태펀드 및 TIPS 15억 트랙 추천을 공략할 단계입니다.';
+              actions = [
+                '스케일업 펀딩 디렉터와 1:1 IR 덱 기술실사 클리닉 예약',
+                '대덕 딥테크 엔젤·VC 매칭 라운드테이블 신청',
+                '정부 TIPS 기술보증기금 레버리지 설계'
+              ];
+            } else {
+              roleTitle = 'AI 특허·IP 기술가치평가 & 라이선싱 전략가';
+              institute = '한국표준과학연구원(KRISS) & 나노종합기술원(NNFC)';
+              program = '2026 소재·부품·장비 딥테크 밸류체인 특허 바스켓 지원사업';
+              summary = '공정 병목을 해결할 수 있는 출연연 원천특허를 묶어 신속히 통상실시권을 획득하고 분쟁을 차단해야 합니다.';
+              actions = [
+                '출연연 핵심 특허 포트폴리오 무료 1:1 심층 검색',
+                '전문 IP 라이선싱 전략가 전담 배정 요청',
+                'KIAT 소부장 특화 밸류체인 실증 바우처 신청'
+              ];
+            }
+          } else if (diagState.role === 'researcher') {
+            roleTitle = '출연연 공공기술 사업화 브릿지 매니저';
+            institute = diagState.field === 'bio' ? '한국생명공학연구원(KRIBB)' : diagState.field === 'aerospace' ? '한국항공우주연구원(KARI)' : '한국화학연구원(KRICT)';
+            program = '출연연 연구원 창업 및 연구소기업 설립 특례 프로그램';
+            summary = '보유하신 원천기술을 바탕으로 연구소기업 등록 및 민간 수요기업과의 기술 출자 합작법인 설립이 가장 유리합니다.';
+            actions = [
+              '연구소기업 설립을 위한 특허 가치평가 무료 상담 접수',
+              '공공기술 사업화 브릿지 매니저 1:1 전담 매칭',
+              '대전시·특구 테스트베드 우선 배정 신청'
+            ];
+          }
+
+          document.getElementById('res-role-title').textContent = roleTitle;
+          document.getElementById('res-summary').textContent = summary;
+          document.getElementById('res-institute').textContent = institute;
+          document.getElementById('res-program').textContent = program;
+          document.getElementById('res-actions').innerHTML = actions.map(a => `
+            <li class="flex items-start gap-2">
+              <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5"></i>
+              <span>${a}</span>
+            </li>
+          `).join('');
+
+          lucide.createIcons();
+          showToast('새로운 AI 밸류체인 진단 결과가 도출되었습니다.');
+        }, 500);
+      }
+
+      function applyDiagnosisToConsultation() {
+        const role = document.getElementById('res-role-title').textContent;
+        const inst = document.getElementById('res-institute').textContent;
+        const msg = document.getElementById('form-message');
+        msg.value = `[AI 진단 연계 신청] ${role} (연계기관: ${inst}) 관련 1:1 심층 상담 희망합니다.`;
+        scrollToConsultation(role);
+        showToast('진단 데이터가 상담 신청 폼에 자동 입력되었습니다.');
+      }
+
+      // 5. Announcements List Renderer & Filter
+      function renderAnnouncements() {
+        const container = document.getElementById('announcements-container');
+        const filtered = ANNOUNCEMENTS.filter(item => {
+          const matchCat = currentAnnCategory === '전체' || item.category === currentAnnCategory;
+          const matchSearch = item.title.toLowerCase().includes(currentAnnSearch.toLowerCase()) ||
+                              item.agency.toLowerCase().includes(currentAnnSearch.toLowerCase()) ||
+                              item.content.toLowerCase().includes(currentAnnSearch.toLowerCase());
+          return matchCat && matchSearch;
+        });
+
+        if (filtered.length === 0) {
+          container.innerHTML = `<div class="p-8 text-center bg-slate-50 rounded-xl border border-slate-200 text-slate-500 text-sm">검색 조건에 맞는 공고가 없습니다.</div>`;
+          return;
+        }
+
+        container.innerHTML = filtered.map(item => {
+          const statusBadge = item.status === '접수중'
+            ? 'text-emerald-700 bg-emerald-50 border-emerald-200'
+            : item.status === '진행중'
+            ? 'text-blue-700 bg-blue-50 border-blue-200'
+            : item.status === '마감임박'
+            ? 'text-amber-700 bg-amber-50 border-amber-200'
+            : 'text-cyan-700 bg-cyan-50 border-cyan-200';
+
+          return `
+            <div onclick="openAnnouncementModal('${item.id}')" class="p-5 rounded-xl bg-white border border-slate-200 hover:border-blue-500 transition-all hover:-translate-y-0.5 cursor-pointer group flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+              <div class="space-y-2 flex-1">
+                <div class="flex items-center gap-2.5 text-xs">
+                  <span class="px-2 py-0.5 rounded text-[11px] font-bold border ${statusBadge}">${item.status}</span>
+                  <span class="text-blue-600 font-semibold">${item.agency}</span>
+                  <span class="text-slate-300">·</span>
+                  <span class="text-slate-500 font-medium">${item.category}</span>
+                </div>
+                <h3 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                  ${item.title}
+                </h3>
+                <div class="flex items-center gap-4 text-xs text-slate-500">
+                  <span class="flex items-center gap-1">
+                    <i data-lucide="calendar" class="w-3.5 h-3.5 text-slate-400"></i>
+                    접수: ${item.startDate} ~ ${item.endDate}
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <i data-lucide="eye" class="w-3.5 h-3.5 text-slate-400"></i>
+                    조회 ${item.views.toLocaleString()}
+                  </span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+                <span class="text-xs text-blue-600 font-bold group-hover:underline">상세보기</span>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform"></i>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        lucide.createIcons();
+      }
+
+      function filterAnnouncements(cat, btn) {
+        currentAnnCategory = cat;
+        document.querySelectorAll('.ann-tab-btn').forEach(b => {
+          b.className = 'ann-tab-btn px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors cursor-pointer text-slate-600 hover:text-slate-900';
+        });
+        btn.className = 'ann-tab-btn px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors cursor-pointer bg-blue-600 text-white shadow-xs';
+        renderAnnouncements();
+      }
+
+      function handleAnnSearch(val) {
+        currentAnnSearch = val;
+        renderAnnouncements();
+      }
+
+      function openAnnouncementModal(id) {
+        const item = ANNOUNCEMENTS.find(a => a.id === id);
+        if (!item) return;
+
+        openModal(
+          item.title,
+          `공고 카테고리: ${item.category} · 주관: ${item.agency}`,
+          `
+            <div class="space-y-4 text-slate-800">
+              <div class="grid grid-cols-2 gap-3 text-xs p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <div><span class="text-slate-500">접수 기간: </span><span class="text-slate-900 font-bold">${item.startDate} ~ ${item.endDate}</span></div>
+                <div><span class="text-slate-500">공고 상태: </span><span class="text-blue-600 font-bold">${item.status}</span></div>
+                ${item.budget ? `<div class="col-span-2"><span class="text-slate-500">지원 규모: </span><span class="text-emerald-700 font-bold">${item.budget}</span></div>` : ''}
+                <div class="col-span-2"><span class="text-slate-500">지원 대상: </span><span class="text-slate-800">${item.target}</span></div>
+              </div>
+
+              <div>
+                <div class="text-xs font-bold text-slate-900 mb-1.5">공고 세부 내용</div>
+                <p class="text-xs sm:text-sm text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200">${item.content}</p>
+              </div>
+
+              ${item.attachment ? `
+                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                  <div class="flex items-center gap-2 text-xs text-slate-800">
+                    <span class="text-blue-600 font-bold">📄</span>
+                    <span>${item.attachment}</span>
+                  </div>
+                  <button onclick="showToast('${item.attachment} 다운로드가 시작되었습니다.')" class="px-3 py-1 bg-white hover:bg-slate-100 text-blue-600 border border-slate-200 text-xs font-bold rounded-lg flex items-center gap-1 transition-colors cursor-pointer shadow-xs">
+                    다운로드
+                  </button>
+                </div>
+              ` : ''}
+
+              <div class="pt-2">
+                <button onclick="closeModal(); scrollToConsultation('${item.title}');" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-xs text-center transition-colors shadow">
+                  이 사업 지원 및 매칭 신청하기
+                </button>
+              </div>
+            </div>
+          `
+        );
+      }
+
+      // 6. Case Study Modal
+      function openCaseModal(index) {
+        const c = CASES[index];
+        openModal(
+          c.title,
+          `${c.company} · ${c.field}`,
+          `
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+                <div class="text-blue-600 font-bold text-xs">전담 코디네이터 & 협력 연구기관</div>
+                <div class="text-slate-900 font-bold">${c.coordinator}</div>
+                <div class="text-slate-600">${c.lab}</div>
+              </div>
+              <div><div class="font-bold text-slate-900 text-xs mb-1">도전 과제 (Challenge)</div><p class="text-slate-700 text-xs leading-relaxed">${c.challenge}</p></div>
+              <div><div class="font-bold text-slate-900 text-xs mb-1">창직 솔루션 (Solution)</div><p class="text-slate-700 text-xs leading-relaxed">${c.solution}</p></div>
+              <div><div class="font-bold text-slate-900 text-xs mb-1">최종 성과 (Outcome)</div><p class="text-slate-700 text-xs leading-relaxed">${c.outcome}</p></div>
+              <div class="grid grid-cols-3 gap-2 pt-2">
+                ${c.metrics.map(m => `
+                  <div class="p-2.5 rounded-xl bg-blue-50 border border-blue-200 text-center">
+                    <div class="text-xs sm:text-sm font-bold text-blue-700 font-mono">${m.val}</div>
+                    <div class="text-[10px] text-slate-500 mt-0.5">${m.label}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `
+        );
+      }
+
+      // 7. Quick Service Modal
+      function openServiceModal(title, desc) {
+        openModal(
+          title,
+          '대덕 딥테크 자주 찾는 서비스 안내',
+          `
+            <div class="space-y-4 text-slate-800">
+              <p class="text-sm text-slate-700 leading-relaxed">${desc}</p>
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2">
+                <div class="font-bold text-slate-900">이용 안내 및 절차</div>
+                <div class="text-slate-600 space-y-1">
+                  <div>1. 온라인 신청서 접수 및 기술 분류 검토</div>
+                  <div>2. 대덕특구 전담 코디네이터 배정 (48시간 이내)</div>
+                  <div>3. 1:1 심층 상담 및 산학연 밸류체인 연계 협의체 구성</div>
+                </div>
+              </div>
+              <button onclick="closeModal(); scrollToConsultation('${title}');" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-xs text-center transition-colors shadow">
+                지금 바로 서비스 신청하기
+              </button>
+            </div>
+          `
+        );
+      }
+
+      // 8. Universal Modal Controller
+      function openModal(title, subtitle, bodyHtml) {
+        document.getElementById('modal-title').textContent = title;
+        document.getElementById('modal-subtitle').textContent = subtitle || '';
+        document.getElementById('modal-body').innerHTML = bodyHtml;
+        document.getElementById('universal-modal').classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      }
+
+      function closeModal() {
+        document.getElementById('universal-modal').classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+
+      // 9. Quick Consultation Form Submit
+      function handleConsultationSubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById('form-name').value.trim();
+        const org = document.getElementById('form-org').value.trim() || '개인(예비창업자/구직자)';
+        const contact = document.getElementById('form-contact').value.trim();
+        const category = document.getElementById('form-category').value;
+        const msg = document.getElementById('form-message').value.trim();
+        const consent = document.getElementById('form-consent').checked;
+        const errEl = document.getElementById('form-error');
+
+        if (!name || !contact) {
+          errEl.classList.remove('hidden');
+          document.getElementById('form-error-text').textContent = '성명과 연락처는 필수 입력 항목입니다.';
+          return;
+        }
+        if (!consent) {
+          errEl.classList.remove('hidden');
+          document.getElementById('form-error-text').textContent = '개인정보 수집 및 이용에 동의해 주세요.';
+          return;
+        }
+
+        errEl.classList.add('hidden');
+        const submitBtn = document.getElementById('form-submit-btn');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '접수 처리 중...';
+
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = `<i data-lucide="send" class="w-4 h-4"></i><span>빠른 상담 신청 완료하기</span>`;
+
+          const receipt = `DTC-2026-${Math.floor(100000 + Math.random() * 900000)}`;
+          const now = new Date().toLocaleString('ko-KR');
+
+          openModal(
+            '상담 신청서가 정상 접수되었습니다',
+            '대덕 딥테크 밸류체인 혁신본부 접수 확인증',
+            `
+              <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <div class="p-4 rounded-xl bg-blue-50 border border-blue-200 text-center space-y-2">
+                  <div class="text-3xl">✅</div>
+                  <div class="text-base font-bold text-slate-900">
+                    접수 번호: <span class="text-blue-600 font-mono">${receipt}</span>
+                  </div>
+                  <p class="text-xs text-slate-600">
+                    ${name} 님의 상담 요청이 전담 코디네이터 풀에 전달되었습니다.
+                  </p>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2 text-xs">
+                  <div class="flex justify-between"><span class="text-slate-500">신청자 성명:</span><span class="text-slate-900 font-bold">${name}</span></div>
+                  <div class="flex justify-between"><span class="text-slate-500">소속 기관:</span><span class="text-slate-900 font-medium">${org}</span></div>
+                  <div class="flex justify-between"><span class="text-slate-500">연락처:</span><span class="text-slate-900 font-medium">${contact}</span></div>
+                  <div class="flex justify-between"><span class="text-slate-500">상담 분야:</span><span class="text-blue-600 font-bold">${category}</span></div>
+                  <div class="flex justify-between"><span class="text-slate-500">접수 일시:</span><span class="text-slate-700">${now}</span></div>
+                </div>
+
+                <p class="text-xs text-slate-500 leading-relaxed text-center">
+                  영업일 기준 48시간 이내에 전담 디렉터가 1:1 연락을 드립니다. 긴급 문의는 대표전화(1661-8255)로 연락 부탁드립니다.
+                </p>
+
+                <button onclick="closeModal()" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-xs text-center transition-colors shadow">
+                  확인 및 창 닫기
+                </button>
+              </div>
+            `
+          );
+
+          document.getElementById('consultation-form').reset();
+          lucide.createIcons();
+        }, 600);
+      }
+
+      // Initialize on load
+      window.addEventListener('DOMContentLoaded', () => {
+        switchJobTab(0);
+        renderAnnouncements();
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>
